@@ -1,0 +1,124 @@
+{
+  "id": "lab-softmax",
+  "unit": "l0-softmax",
+  "task": "逐行稳定 softmax",
+  "mechanism": "实现数组算子，核对数值后与同机Python循环基线比较。CPU执行；GPU吞吐未测。",
+  "timebox_min": 120,
+  "env": {
+    "versions": {
+      "python": "3.11",
+      "numpy": "2.2.6"
+    },
+    "vram_limit_mb": 8192,
+    "env_vars": {
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "selfcheck_cmd": "python run.py --selfcheck"
+  },
+  "scaffold": {
+    "tree": [
+      "solution.py"
+    ],
+    "signatures": [
+      "softmax_rows(x)"
+    ],
+    "contract": "float64输入，最后一轴归一化；输出shape必须匹配；禁止非有限值；CPU内存预算256MiB",
+    "seed_script": "import numpy as np\nrng = np.random.default_rng(73)\nx = rng.normal(size=(256,256))",
+    "edge_cases": [
+      "单元素/单token",
+      "常数行/负值",
+      "不同矩形维度"
+    ],
+    "starter": "import numpy as np\n\ndef softmax_rows(x):\n    raise NotImplementedError\n"
+  },
+  "stages": [
+    {
+      "goal": "形状与单位检查",
+      "expected_observation": "输出形状符合契约"
+    },
+    {
+      "goal": "正确性对齐",
+      "expected_observation": "边界与误差容限通过"
+    },
+    {
+      "goal": "性能与内存记账",
+      "expected_observation": "同机加速与预算均过线"
+    }
+  ],
+  "acceptance": {
+    "cmd": "python -m app.runner accept lab-softmax --solution {solution}",
+    "correctness": {
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "dataset": "deterministic seed 42; includes edge cases"
+    },
+    "perf": {
+      "baseline": "same-process Python loop",
+      "target_x": 1.2,
+      "protocol": {
+        "warmup": 2,
+        "reps": 7,
+        "metric": "median_ms",
+        "sync": "CPU synchronous NumPy"
+      }
+    },
+    "memory": {
+      "limit_mb": 256,
+      "api": "Windows peak_wset + tracemalloc, CPU not VRAM"
+    },
+    "robustness": [
+      "singleton",
+      "constant/large values",
+      "shape and finite checks"
+    ]
+  },
+  "hints": [
+    {
+      "after_min": 15,
+      "level": 1,
+      "content": "先写形状注释与归约轴"
+    },
+    {
+      "after_min": 40,
+      "level": 2,
+      "content": "检查最大值平移与keepdims"
+    },
+    {
+      "after_min": 75,
+      "level": 3,
+      "content": "只替换最内层循环，复跑同机基线"
+    }
+  ],
+  "symptoms": [
+    {
+      "symptom": "溢出",
+      "cause": "直接指数",
+      "fix": "先减最大值"
+    },
+    {
+      "symptom": "行和异常",
+      "cause": "归约轴错",
+      "fix": "保留维度"
+    },
+    {
+      "symptom": "输出错维",
+      "cause": "转置遗漏",
+      "fix": "先写形状"
+    },
+    {
+      "symptom": "速度倒退",
+      "cause": "重复分配",
+      "fix": "减少临时数组"
+    },
+    {
+      "symptom": "内存超限",
+      "cause": "中间量过大",
+      "fix": "减小输入或分块并重算预算"
+    }
+  ],
+  "scoring": "四项均通过且实验账提交才通过",
+  "difficulty": {
+    "fill_in": "提供签名与契约",
+    "from_scratch": "仅签名和测试"
+  }
+}

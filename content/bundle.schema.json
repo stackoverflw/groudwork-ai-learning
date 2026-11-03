@@ -1,0 +1,610 @@
+{
+  "type": "object",
+  "properties": {
+    "unit": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "week": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "concepts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200000
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "deliverable": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "acceptance_cmd": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "hours": {
+          "type": "object",
+          "properties": {
+            "study": {
+              "type": "number",
+              "minimum": 0
+            },
+            "write": {
+              "type": "number",
+              "minimum": 0
+            },
+            "read": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "study",
+            "write",
+            "read"
+          ],
+          "additionalProperties": false
+        },
+        "prereq": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200000
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "gate": {
+          "type": "boolean"
+        },
+        "practice": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "lecture": {
+          "type": "boolean"
+        },
+        "produced": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "order",
+        "week",
+        "layer",
+        "unit",
+        "title",
+        "objective",
+        "concepts",
+        "deliverable",
+        "acceptance_cmd",
+        "hours",
+        "prereq",
+        "gate",
+        "practice",
+        "lecture",
+        "produced"
+      ],
+      "additionalProperties": false
+    },
+    "lecture": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200000
+    },
+    "lab": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "task": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "mechanism": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "timebox_min": {
+          "type": "integer",
+          "minimum": 120,
+          "maximum": 240
+        },
+        "env": {
+          "type": "object",
+          "properties": {
+            "versions": {
+              "type": "object",
+              "properties": {
+                "python": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200000
+                },
+                "numpy": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200000
+                }
+              },
+              "required": [
+                "python",
+                "numpy"
+              ],
+              "additionalProperties": false
+            },
+            "vram_limit_mb": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 8192
+            },
+            "env_vars": {
+              "type": "object",
+              "properties": {
+                "OPENBLAS_NUM_THREADS": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200000
+                }
+              },
+              "required": [
+                "OPENBLAS_NUM_THREADS"
+              ],
+              "additionalProperties": false
+            },
+            "selfcheck_cmd": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            }
+          },
+          "required": [
+            "versions",
+            "vram_limit_mb",
+            "env_vars",
+            "selfcheck_cmd"
+          ],
+          "additionalProperties": false
+        },
+        "scaffold": {
+          "type": "object",
+          "properties": {
+            "tree": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "minItems": 0,
+              "maxItems": 100
+            },
+            "signatures": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "minItems": 0,
+              "maxItems": 100
+            },
+            "contract": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            },
+            "seed_script": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            },
+            "edge_cases": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "starter": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            }
+          },
+          "required": [
+            "tree",
+            "signatures",
+            "contract",
+            "seed_script",
+            "edge_cases",
+            "starter"
+          ],
+          "additionalProperties": false
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "goal": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "expected_observation": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              }
+            },
+            "required": [
+              "goal",
+              "expected_observation"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "acceptance": {
+          "type": "object",
+          "properties": {
+            "cmd": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            },
+            "correctness": {
+              "type": "object",
+              "properties": {
+                "atol": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "rtol": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "dataset": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200000
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "entrypoint": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+                        },
+                        "cases": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "args": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/$defs/value"
+                                },
+                                "minItems": 1,
+                                "maxItems": 10
+                              },
+                              "expected": {
+                                "$ref": "#/$defs/value"
+                              }
+                            },
+                            "required": [
+                              "args",
+                              "expected"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "minItems": 3,
+                          "maxItems": 100
+                        },
+                        "benchmark_args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/value"
+                          },
+                          "minItems": 1,
+                          "maxItems": 10
+                        },
+                        "baseline_source": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200000
+                        }
+                      },
+                      "required": [
+                        "entrypoint",
+                        "cases",
+                        "benchmark_args",
+                        "baseline_source"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "atol",
+                "rtol",
+                "dataset"
+              ],
+              "additionalProperties": false
+            },
+            "perf": {
+              "type": "object",
+              "properties": {
+                "baseline": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200000
+                },
+                "target_x": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "protocol": {
+                  "type": "object",
+                  "properties": {
+                    "warmup": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "reps": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "metric": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200000
+                    },
+                    "sync": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200000
+                    }
+                  },
+                  "required": [
+                    "warmup",
+                    "reps",
+                    "metric",
+                    "sync"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "baseline",
+                "target_x",
+                "protocol"
+              ],
+              "additionalProperties": false
+            },
+            "memory": {
+              "type": "object",
+              "properties": {
+                "limit_mb": {
+                  "type": "integer",
+                  "minimum": 32,
+                  "maximum": 8192
+                },
+                "api": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200000
+                }
+              },
+              "required": [
+                "limit_mb",
+                "api"
+              ],
+              "additionalProperties": false
+            },
+            "robustness": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "minItems": 0,
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "cmd",
+            "correctness",
+            "perf",
+            "memory",
+            "robustness"
+          ],
+          "additionalProperties": false
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "after_min": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "level": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "content": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              }
+            },
+            "required": [
+              "after_min",
+              "level",
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "symptoms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "symptom": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "cause": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              "fix": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              }
+            },
+            "required": [
+              "symptom",
+              "cause",
+              "fix"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "scoring": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200000
+        },
+        "difficulty": {
+          "type": "object",
+          "properties": {
+            "fill_in": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            },
+            "from_scratch": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200000
+            }
+          },
+          "required": [
+            "fill_in",
+            "from_scratch"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "unit",
+        "task",
+        "mechanism",
+        "timebox_min",
+        "env",
+        "scaffold",
+        "stages",
+        "acceptance",
+        "hints",
+        "symptoms",
+        "scoring",
+        "difficulty"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "unit",
+    "lecture",
+    "lab"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/value"
+          },
+          "maxItems": 200000
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "l0-attention",
+  "order": 8,
+  "week": 2,
+  "layer": "L0",
+  "unit": "l0-attention",
+  "title": "注意力张量与缓存增长",
+  "objective": "实现缩放点积注意力并解释平方中间量",
+  "concepts": [
+    "缩放点积",
+    "平方中间量",
+    "分块的代价"
+  ],
+  "deliverable": "讲义复述 + 五题闭卷 + 实验记录",
+  "acceptance_cmd": "python -m app.runner accept lab-attention --solution {solution}",
+  "hours": {
+    "study": 0.6,
+    "write": 1.4,
+    "read": 0.4
+  },
+  "prereq": [
+    "l0-softmax"
+  ],
+  "gate": true,
+  "practice": "lab-attention",
+  "lecture": true,
+  "produced": true
+}

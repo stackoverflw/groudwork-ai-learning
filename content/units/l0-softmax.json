@@ -1,0 +1,28 @@
+{
+  "id": "l0-softmax",
+  "order": 7,
+  "week": 2,
+  "layer": "L0",
+  "unit": "l0-softmax",
+  "title": "稳定归一化与带宽账",
+  "objective": "实现稳定逐行softmax并测加速",
+  "concepts": [
+    "最大值平移",
+    "归约轴",
+    "向量化与基线"
+  ],
+  "deliverable": "讲义复述 + 五题闭卷 + 实验记录",
+  "acceptance_cmd": "python -m app.runner accept lab-softmax --solution {solution}",
+  "hours": {
+    "study": 0.6,
+    "write": 1.4,
+    "read": 0.4
+  },
+  "prereq": [
+    "l0-tensor"
+  ],
+  "gate": true,
+  "practice": "lab-softmax",
+  "lecture": true,
+  "produced": true
+}

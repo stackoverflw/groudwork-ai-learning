@@ -1,0 +1,24 @@
+{
+  "id": "week-06",
+  "order": 26,
+  "week": 6,
+  "layer": "L2",
+  "unit": "week-06",
+  "title": "L2 · 待生产",
+  "objective": "待生产；通过内容工厂校验后才开放",
+  "concepts": [],
+  "deliverable": "待生产",
+  "acceptance_cmd": "",
+  "hours": {
+    "study": 2,
+    "write": 6,
+    "read": 2
+  },
+  "prereq": [
+    "week-05"
+  ],
+  "gate": true,
+  "practice": "",
+  "lecture": false,
+  "produced": false
+}

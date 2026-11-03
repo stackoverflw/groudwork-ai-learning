@@ -1,0 +1,54 @@
+{
+  "id": "l0-check",
+  "timebox_min": 15,
+  "questions": [
+    {
+      "id": "c1",
+      "kind": "concept",
+      "prompt": "不用参考解释权重、KV、激活的区别。",
+      "rubric": [
+        "无法区分",
+        "能区分两项",
+        "能区分三项并说出增长规律"
+      ]
+    },
+    {
+      "id": "c2",
+      "kind": "concept",
+      "prompt": "解释为什么softmax减最大值不改变结果。",
+      "rubric": [
+        "没有解释",
+        "提到防溢出",
+        "说明分子分母同因子缩放"
+      ]
+    },
+    {
+      "id": "n1",
+      "kind": "number",
+      "prompt": "FP16的1024×1024数组占多少MiB？",
+      "answer": 2,
+      "atol": 0.001,
+      "rtol": 0,
+      "working": "元素数×每元素字节数÷每MiB字节数；先统一单位再相乘。"
+    },
+    {
+      "id": "n2",
+      "kind": "number",
+      "prompt": "L=24,T=1024,H=8,D=64,b=2，KV共多少MiB？",
+      "answer": 48,
+      "atol": 0.01,
+      "rtol": 0,
+      "working": "键与值各一份，再乘层、token、KV头数、头宽和元素字节，最后换成MiB。"
+    },
+    {
+      "id": "d1",
+      "kind": "design",
+      "prompt": "设计一次比较向量化与循环的实验。",
+      "rubric": [
+        "缺少对照",
+        "固定数据与同机对照",
+        "还明确预热、重复、中位数、内存与正确性门禁"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2583 @@
+{
+  "foundation-python": {
+    "unit": {
+      "id": "foundation-python",
+      "unit": "foundation-python",
+      "order": -4,
+      "week": 0,
+      "layer": "预备",
+      "title": "Python 起步 · 一段代码怎样得到答案",
+      "objective": "变量是给值起的名字。函数接收输入，按步骤处理，再用 return 把结果交给调用者。print 是把值显示出来，方便观察。",
+      "concepts": [
+        "把单价和数量分别放到两个变量里，相乘得到小计",
+        "用 if 判断是否有折扣",
+        "把处理写进 def 定义的函数，函数体统一缩进"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-foundation-python --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [],
+      "gate": false,
+      "practice": "course-foundation-python",
+      "lecture": false,
+      "produced": true,
+      "supplement": true,
+      "requires_quiz": false,
+      "guide": {
+        "title": "Python 起步 · 一段代码怎样得到答案",
+        "idea": "变量是给值起的名字。函数接收输入，按步骤处理，再用 return 把结果交给调用者。print 是把值显示出来，方便观察。",
+        "steps": [
+          "把单价和数量分别放到两个变量里，相乘得到小计。",
+          "用 if 判断是否有折扣。比较相等用 ==，给变量赋值用 =。",
+          "把处理写进 def 定义的函数，函数体统一缩进。先调用一次看看结果，再试数量为零。",
+          "列表用方括号包住多个值。for price in prices 会依次拿到列表里的每个价格。写累加前先设 total = 0，这样空列表也有清楚的结果。"
+        ],
+        "example": "def subtotal(price, count):\n    return price * count  # return 把计算结果交给调用者\n\nprint(subtotal(4, 3))  # 12",
+        "check": "单价 4 元，买 3 个，总价多少？",
+        "answer": "12 元。数量乘单价。",
+        "practice": "prices 是非负整数列表。返回所有价格的总和，空列表返回 0。用 for 循环逐项累加，或用 sum 检查你的结果。"
+      }
+    },
+    "quiz": {
+      "id": "foundation-python",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "单价 4 元，买 3 个，总价多少？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "12 元。数量乘单价。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "7 个物品，每个 2 元，共多少元？",
+          "answer": 14,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "空列表的价格总和是多少？",
+          "answer": 0,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "total(prices)",
+      "starter": "def total(prices):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "prices 是非负整数列表。返回所有价格的总和，空列表返回 0。用 for 循环逐项累加，或用 sum 检查你的结果。",
+      "minutes": 30,
+      "examples": [
+        {
+          "args": [
+            [
+              2,
+              3
+            ]
+          ],
+          "expected": 5
+        }
+      ],
+      "correctness": [
+        [
+          [
+            [
+              2,
+              3
+            ]
+          ],
+          5
+        ],
+        [
+          [
+            [
+              4,
+              4,
+              1
+            ]
+          ],
+          9
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            []
+          ],
+          0
+        ],
+        [
+          [
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          5
+        ]
+      ]
+    }
+  },
+  "foundation-math": {
+    "unit": {
+      "id": "foundation-math",
+      "unit": "foundation-math",
+      "order": -3,
+      "week": 0,
+      "layer": "预备",
+      "title": "数学起步 · 比例、平均数与变化",
+      "objective": "比例回答“部分占整体多少”，平均数回答“均摊后每项是多少”。写公式时先说出分子、分母各表示什么，分母为零要另行处理。",
+      "concepts": [
+        "20 人中有 5 人通过，通过率是 5÷20，也就是 25%",
+        "两个耗时 2 秒和 6 秒，平均耗时是 4 秒",
+        "斜率衡量输入每增加一单位，输出变化多少"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-foundation-math --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [],
+      "gate": false,
+      "practice": "course-foundation-math",
+      "lecture": false,
+      "produced": true,
+      "supplement": true,
+      "requires_quiz": false,
+      "guide": {
+        "title": "数学起步 · 比例、平均数与变化",
+        "idea": "比例回答“部分占整体多少”，平均数回答“均摊后每项是多少”。写公式时先说出分子、分母各表示什么，分母为零要另行处理。",
+        "steps": [
+          "20 人中有 5 人通过，通过率是 5÷20，也就是 25%。",
+          "两个耗时 2 秒和 6 秒，平均耗时是 4 秒。若出现特别慢的一次，再看排序后的中位数。",
+          "斜率衡量输入每增加一单位，输出变化多少。后面的梯度课把这个想法用于模型误差。"
+        ],
+        "example": "passed, total = 5, 20\nrate = passed / total if total > 0 else None  # 条件表达式：无样本时返回空值\nprint(rate)  # 0.25",
+        "check": "8 道题答对 6 道，通过率是多少？",
+        "answer": "6÷8=0.75，也就是 75%。",
+        "practice": "两个参数都是非负整数且 passed 不大于 total。返回 passed / total 的小数，total 为 0 时返回 None。"
+      }
+    },
+    "quiz": {
+      "id": "foundation-math",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "8 道题答对 6 道，通过率是多少？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "6÷8=0.75，也就是 75%。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "10 道题答对 7 道，通过率是多少？请输入 0 到 1 的小数。",
+          "answer": 0.7,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "耗时 2 秒和 8 秒，平均是多少秒？",
+          "answer": 5,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "rate(passed, total)",
+      "starter": "def rate(passed, total):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "两个参数都是非负整数且 passed 不大于 total。返回 passed / total 的小数，total 为 0 时返回 None。",
+      "minutes": 30,
+      "examples": [
+        {
+          "args": [
+            1,
+            4
+          ],
+          "expected": 0.25
+        }
+      ],
+      "correctness": [
+        [
+          [
+            1,
+            4
+          ],
+          0.25
+        ],
+        [
+          [
+            3,
+            4
+          ],
+          0.75
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            0,
+            0
+          ],
+          null
+        ],
+        [
+          [
+            0,
+            3
+          ],
+          0
+        ]
+      ]
+    }
+  },
+  "foundation-cs": {
+    "unit": {
+      "id": "foundation-cs",
+      "unit": "foundation-cs",
+      "order": -2,
+      "week": 0,
+      "layer": "预备",
+      "title": "计算机起步 · 列表、字典、字符和文件",
+      "objective": "列表按位置存放一串值，字典按键找值。数据写到文件才能跨进程保留。JSON 是交换数据用的文本格式，Unicode 字符通过 UTF-8 等编码变成字节。",
+      "concepts": [
+        "用列表保存收到的事件，用字典按类型记次数",
+        "在字典中用 .get(key, 0) 取得已有次数，缺失时从 0 起",
+        "对文本和字节分别计量"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-foundation-cs --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [],
+      "gate": false,
+      "practice": "course-foundation-cs",
+      "lecture": false,
+      "produced": true,
+      "supplement": true,
+      "requires_quiz": false,
+      "guide": {
+        "title": "计算机起步 · 列表、字典、字符和文件",
+        "idea": "列表按位置存放一串值，字典按键找值。数据写到文件才能跨进程保留。JSON 是交换数据用的文本格式，Unicode 字符通过 UTF-8 等编码变成字节。",
+        "steps": [
+          "用列表保存收到的事件，用字典按类型记次数。",
+          "在字典中用 .get(key, 0) 取得已有次数，缺失时从 0 起。",
+          "对文本和字节分别计量。Python 的 len(text) 数字符，len(text.encode(\"utf-8\")) 数编码后的字节。",
+          "出错时先读最后一行错误信息，再看它指向的文件和行号。KeyError 往往表示访问了不存在的键，TypeError 表示操作不适用于该类型。"
+        ],
+        "example": "import json\n\ncounts = {\"ask\": 2}\ncounts[\"ask\"] = counts.get(\"ask\", 0) + 1\ntext = json.dumps(counts, ensure_ascii=False)  # 把字典编码为 JSON 文本\nprint(text, len(\"地\".encode(\"utf-8\")))",
+        "check": "两个事件的类型都是 ask，字典应该记几次？",
+        "answer": "记为 {\"ask\": 2}。",
+        "practice": "events 是类型名称的字符串列表，按名称统计次数，返回字典。空列表返回空字典，大小写按原样区分。"
+      }
+    },
+    "quiz": {
+      "id": "foundation-cs",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "两个事件的类型都是 ask，字典应该记几次？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "记为 {\"ask\": 2}。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "列表有 3 个 ask 和 2 个 review，共有几个事件？",
+          "answer": 5,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "列表只有 ask 和 review 两种类型，统计字典有几个键？",
+          "answer": 2,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "count_events(events)",
+      "starter": "def count_events(events):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "events 是类型名称的字符串列表，按名称统计次数，返回字典。空列表返回空字典，大小写按原样区分。",
+      "minutes": 30,
+      "examples": [
+        {
+          "args": [
+            [
+              "ask",
+              "ask",
+              "review"
+            ]
+          ],
+          "expected": {
+            "ask": 2,
+            "review": 1
+          }
+        }
+      ],
+      "correctness": [
+        [
+          [
+            [
+              "ask",
+              "ask",
+              "review"
+            ]
+          ],
+          {
+            "ask": 2,
+            "review": 1
+          }
+        ],
+        [
+          [
+            [
+              "a",
+              "b",
+              "b"
+            ]
+          ],
+          {
+            "a": 1,
+            "b": 2
+          }
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            []
+          ],
+          {}
+        ],
+        [
+          [
+            [
+              "A",
+              "a"
+            ]
+          ],
+          {
+            "A": 1,
+            "a": 1
+          }
+        ]
+      ]
+    }
+  },
+  "foundation-units": {
+    "unit": {
+      "id": "foundation-units",
+      "unit": "foundation-units",
+      "order": -1,
+      "week": 0,
+      "layer": "预备",
+      "title": "物理与硬件起步 · 时间、容量和带宽",
+      "objective": "性能测量需要看单位。容量说能放多少，带宽说每秒能传多少，延迟说等多久。物理上功率乘时间得到能量，实际设备的功率可能随负载变化。",
+      "concepts": [
+        "一块大小为 20 MB 的数据，通过 10 MB/s 的通道，理想传输时间是 2 秒",
+        "先统一单位",
+        "实测往往还包含准备数据和调度的时间"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-foundation-units --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [],
+      "gate": false,
+      "practice": "course-foundation-units",
+      "lecture": false,
+      "produced": true,
+      "supplement": true,
+      "requires_quiz": false,
+      "guide": {
+        "title": "物理与硬件起步 · 时间、容量和带宽",
+        "idea": "性能测量需要看单位。容量说能放多少，带宽说每秒能传多少，延迟说等多久。物理上功率乘时间得到能量，实际设备的功率可能随负载变化。",
+        "steps": [
+          "一块大小为 20 MB 的数据，通过 10 MB/s 的通道，理想传输时间是 2 秒。",
+          "先统一单位。MB 以十进制换算，MiB 是 1,048,576 字节。",
+          "实测往往还包含准备数据和调度的时间。把 2 秒记为理想估算，另记实测。功率近似恒定时，用瓦乘秒得到焦耳。"
+        ],
+        "example": "size_mb = 20\nbandwidth_mb_s = 10\nprint(size_mb / bandwidth_mb_s)  # 理想秒数，不是实测",
+        "check": "50 W 恒定功率持续 2 秒，能量是多少？",
+        "answer": "100 焦耳。W 等于焦耳每秒。",
+        "practice": "size 和 bandwidth 使用相同的容量单位，bandwidth 的单位是容量单位每秒。输入均为非负数。返回理想秒数，带宽为 0 时返回 None。"
+      }
+    },
+    "quiz": {
+      "id": "foundation-units",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "50 W 恒定功率持续 2 秒，能量是多少？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "100 焦耳。W 等于焦耳每秒。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "30 MB 以 10 MB/s 传输，理想耗时几秒？",
+          "answer": 3,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "恒定功率 40 W 持续 3 秒，消耗多少焦耳？",
+          "answer": 120,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "transfer_seconds(size, bandwidth)",
+      "starter": "def transfer_seconds(size, bandwidth):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "size 和 bandwidth 使用相同的容量单位，bandwidth 的单位是容量单位每秒。输入均为非负数。返回理想秒数，带宽为 0 时返回 None。",
+      "minutes": 30,
+      "examples": [
+        {
+          "args": [
+            20,
+            10
+          ],
+          "expected": 2
+        }
+      ],
+      "correctness": [
+        [
+          [
+            20,
+            10
+          ],
+          2
+        ],
+        [
+          [
+            5,
+            2
+          ],
+          2.5
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            0,
+            4
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            0
+          ],
+          null
+        ]
+      ]
+    }
+  },
+  "week-03": {
+    "unit": {
+      "id": "week-03",
+      "unit": "week-03",
+      "order": 23,
+      "week": 3,
+      "layer": "L1",
+      "title": "定义问题 · 本地论文与技术文档证据助手先分流",
+      "objective": "贯穿项目是本地论文与技术文档证据助手。你可以问论文的实验设置，也可以在仓库文档里找安装方法。先把请求划成论文、代码仓库或待复核，并约定涉及私有资料时的处理。",
+      "concepts": [
+        "把使用者、输入、输出和范围写成四句",
+        "把可观察的例子写成测试",
+        "先用规则做一个可比较的基线"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-03 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "l0-measure"
+      ],
+      "gate": true,
+      "practice": "course-week-03",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "定义问题 · 本地论文与技术文档证据助手先分流",
+        "idea": "贯穿项目是本地论文与技术文档证据助手。你可以问论文的实验设置，也可以在仓库文档里找安装方法。先把请求划成论文、代码仓库或待复核，并约定涉及私有资料时的处理。",
+        "steps": [
+          "把使用者、输入、输出和范围写成四句。例：接收简短问题，给出 paper、repository 或 review。",
+          "把可观察的例子写成测试。正常问题和没有关键词的问题都要写，涉及私有资料的问题即使同时包含其他关键词也应转人工。",
+          "先用规则做一个可比较的基线。规则做得不够好的案例记下来，作为以后评估模型是否有帮助的依据。"
+        ],
+        "example": "text = \"PAPER hours\"\nwords = set(text.casefold().split())  # casefold 统一大小写，set 用于成员判断\nprint(\"paper\" in words)",
+        "check": "一句话同时包含 private 和 paper，谁优先？",
+        "answer": "先转人工。安全规则的优先级高于普通分流。",
+        "practice": "按空白分词，忽略大小写。private 优先返回 review。只出现 paper 返回 paper，只出现 repo 返回 repository。两个普通关键词同时出现或都不出现时返回 review。"
+      }
+    },
+    "quiz": {
+      "id": "week-03",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "一句话同时包含 private 和 paper，谁优先？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "先转人工。安全规则的优先级高于普通分流。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "6 条普通问题加 2 条转人工样本，共几个用例？",
+          "answer": 8,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "5 个用例通过 4 个，通过率是多少？请输入 0 到 1 的小数。",
+          "answer": 0.8,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "route(text)",
+      "starter": "def route(text):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "按空白分词，忽略大小写。private 优先返回 review。只出现 paper 返回 paper，只出现 repo 返回 repository。两个普通关键词同时出现或都不出现时返回 review。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            "paper hours"
+          ],
+          "expected": "paper"
+        }
+      ],
+      "correctness": [
+        [
+          [
+            "paper hours"
+          ],
+          "paper"
+        ],
+        [
+          [
+            "Repo help"
+          ],
+          "repository"
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            "private paper"
+          ],
+          "review"
+        ],
+        [
+          [
+            "paper repo"
+          ],
+          "review"
+        ],
+        [
+          [
+            "repost"
+          ],
+          "review"
+        ],
+        [
+          [
+            "  "
+          ],
+          "review"
+        ]
+      ]
+    }
+  },
+  "week-04": {
+    "unit": {
+      "id": "week-04",
+      "unit": "week-04",
+      "order": 24,
+      "week": 4,
+      "layer": "L1",
+      "title": "数据基础 · 给记录定格式",
+      "objective": "系统每次收到请求都要做输入检查。字典像一张登记卡，先明确必要字段，再确定每个字段允许的类型和内容。",
+      "concepts": [
+        "为登记卡选两个必要字段 id 和 text，都是去掉首尾空白后仍有内容的字符串",
+        "明确缺字段、错误类型和纯空白的处理",
+        "只把需要的字段交给后续模块，保留原记录供调用方继续使用"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-04 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-03"
+      ],
+      "gate": true,
+      "practice": "course-week-04",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "数据基础 · 给记录定格式",
+        "idea": "系统每次收到请求都要做输入检查。字典像一张登记卡，先明确必要字段，再确定每个字段允许的类型和内容。",
+        "steps": [
+          "为登记卡选两个必要字段 id 和 text，都是去掉首尾空白后仍有内容的字符串。",
+          "明确缺字段、错误类型和纯空白的处理。验证阶段返回稳定的错误码，便于调用方分流。",
+          "只把需要的字段交给后续模块，保留原记录供调用方继续使用。用 JSON 输入输出可以在本地保存并复跑。"
+        ],
+        "example": "record = {\"id\": \" a1 \", \"text\": \"  paper  \"}\nclean_id = record[\"id\"].strip()  # strip 去掉首尾空白\nprint({\"id\": clean_id, \"text\": record[\"text\"].strip()})",
+        "check": "text 是空格，去掉首尾空白后还算有效吗？",
+        "answer": "无效，应在进入后续步骤前返回错误。",
+        "practice": "输入可能是任意 JSON 值。只有字典且 id、text 都是非空字符串时返回 {\"id\": 清理后的id, \"text\": 清理后的text}，其余返回 {\"error\": \"invalid\"}。不要修改输入。"
+      }
+    },
+    "quiz": {
+      "id": "week-04",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "text 是空格，去掉首尾空白后还算有效吗？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "无效，应在进入后续步骤前返回错误。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "必要字段 id、text 里只有 id 有值，还缺几个？",
+          "answer": 1,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "4 条输入里有 3 条格式正确，有效比例是多少？",
+          "answer": 0.75,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "normalize(record)",
+      "starter": "def normalize(record):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "输入可能是任意 JSON 值。只有字典且 id、text 都是非空字符串时返回 {\"id\": 清理后的id, \"text\": 清理后的text}，其余返回 {\"error\": \"invalid\"}。不要修改输入。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            {
+              "id": " x ",
+              "text": " A ",
+              "other": 1
+            }
+          ],
+          "expected": {
+            "id": "x",
+            "text": "A"
+          }
+        }
+      ],
+      "correctness": [
+        [
+          [
+            {
+              "id": " x ",
+              "text": " A ",
+              "other": 1
+            }
+          ],
+          {
+            "id": "x",
+            "text": "A"
+          }
+        ],
+        [
+          [
+            {
+              "id": "b",
+              "text": "核对实验设置"
+            }
+          ],
+          {
+            "id": "b",
+            "text": "核对实验设置"
+          }
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            null
+          ],
+          {
+            "error": "invalid"
+          }
+        ],
+        [
+          [
+            {
+              "id": 3,
+              "text": "ok"
+            }
+          ],
+          {
+            "error": "invalid"
+          }
+        ],
+        [
+          [
+            {
+              "id": "a",
+              "text": " "
+            }
+          ],
+          {
+            "error": "invalid"
+          }
+        ],
+        [
+          [
+            []
+          ],
+          {
+            "error": "invalid"
+          }
+        ]
+      ]
+    }
+  },
+  "week-05": {
+    "unit": {
+      "id": "week-05",
+      "unit": "week-05",
+      "order": 25,
+      "week": 5,
+      "layer": "L2",
+      "title": "设计评价 · 数清答对、误报和漏报",
+      "objective": "评价从任务风险出发。证据助手若把无依据的主张当成已核实，代价比多转一次人工大。只看总准确率容易把这类错误藏起来。",
+      "concepts": [
+        "给每条样本标上“应转人工”或“无需转人工”，再与程序预测逐条对照",
+        "把应转且转了记 TP",
+        "精确率是转出去的请求里有多少确实该转，召回率是该转的请求里有多少被转走"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-05 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-04"
+      ],
+      "gate": true,
+      "practice": "course-week-05",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "设计评价 · 数清答对、误报和漏报",
+        "idea": "评价从任务风险出发。证据助手若把无依据的主张当成已核实，代价比多转一次人工大。只看总准确率容易把这类错误藏起来。",
+        "steps": [
+          "给每条样本标上“应转人工”或“无需转人工”，再与程序预测逐条对照。",
+          "把应转且转了记 TP；无需转却转了记 FP；应转却没转记 FN；无需转且没转记 TN。",
+          "精确率是转出去的请求里有多少确实该转，召回率是该转的请求里有多少被转走。挑一批只用于最后比较的样本，防止一边看答案一边调规则。",
+          "把比例读成带条件的问题。召回率的分母是‘确实该转人工的样本’，只在这组里数成功。小样本的比例可能波动很大，所以同时写上样本数，并分别统计正常与高风险样本。"
+        ],
+        "example": "tp, fp, fn = 3, 1, 2\nprint(tp / (tp + fp))  # 精确率 0.75\nprint(tp / (tp + fn))  # 召回率 0.6",
+        "check": "100 条请求里 1 条需转人工，程序全部判为普通，准确率高吗？",
+        "answer": "准确率有 99%，但召回率为 0，最需要发现的请求没被发现。",
+        "practice": "输入是两个同长度列表，每项为 0 或 1，1 表示转人工。返回含 tp、fp、fn、tn 四个整数的字典。长度不同时返回 {\"error\":\"length\"}；两个列表都为空时返回四个零。"
+      }
+    },
+    "quiz": {
+      "id": "week-05",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "100 条请求里 1 条需转人工，程序全部判为普通，准确率高吗？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "准确率有 99%，但召回率为 0，最需要发现的请求没被发现。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "TP 为 3、FN 为 1，召回率是多少？",
+          "answer": 0.75,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "FP 为 2、TN 为 8，实际无需转人工的请求有几条？",
+          "answer": 10,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "confusion(labels, predictions)",
+      "starter": "def confusion(labels, predictions):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "输入是两个同长度列表，每项为 0 或 1，1 表示转人工。返回含 tp、fp、fn、tn 四个整数的字典。长度不同时返回 {\"error\":\"length\"}；两个列表都为空时返回四个零。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            [
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          "expected": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "tn": 1
+          }
+        }
+      ],
+      "correctness": [
+        [
+          [
+            [
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "tn": 1
+          }
+        ],
+        [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0
+          }
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            [],
+            []
+          ],
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0
+          }
+        ],
+        [
+          [
+            [
+              1
+            ],
+            []
+          ],
+          {
+            "error": "length"
+          }
+        ],
+        [
+          [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 1
+          }
+        ]
+      ]
+    }
+  },
+  "week-06": {
+    "unit": {
+      "id": "week-06",
+      "unit": "week-06",
+      "order": 26,
+      "week": 6,
+      "layer": "L2",
+      "title": "算清资源 · 时间预算与估算",
+      "objective": "AI 系统的速度由数据读取、计算和等待共同决定。先按单位算理想时间，再测实际耗时。预算决定要缩小输入、改实现，还是允许任务稍后处理。",
+      "concepts": [
+        "用数据字节数除以字节每秒，得到只传输的理想时间",
+        "把传输和计算分开列账",
+        "测多次并报告中位数，再单独看最慢几次"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-06 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-05"
+      ],
+      "gate": true,
+      "practice": "course-week-06",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "算清资源 · 时间预算与估算",
+        "idea": "AI 系统的速度由数据读取、计算和等待共同决定。先按单位算理想时间，再测实际耗时。预算决定要缩小输入、改实现，还是允许任务稍后处理。",
+        "steps": [
+          "用数据字节数除以字节每秒，得到只传输的理想时间。",
+          "把传输和计算分开列账。如果明确规定两个步骤顺序运行，两项估算就相加。",
+          "测多次并报告中位数，再单独看最慢几次。输出估算假设和实测环境。用瓦和秒估算能耗时写明功率假设。"
+        ],
+        "example": "size_mb, bandwidth_mb_s = 20, 10\ncompute_seconds = 1.5\nprint(size_mb / bandwidth_mb_s + compute_seconds)  # 3.5 秒估算",
+        "check": "传输需 2 秒，随后计算 1 秒，两个步骤顺序执行至少估多少秒？",
+        "answer": "按给定假设估算 3 秒。",
+        "practice": "非负数字参数。传输与计算顺序执行，返回两项估算之和，统一输出秒数小数。带宽为零时返回 None。"
+      }
+    },
+    "quiz": {
+      "id": "week-06",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "传输需 2 秒，随后计算 1 秒，两个步骤顺序执行至少估多少秒？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "按给定假设估算 3 秒。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "传输 40 MB，带宽 20 MB/s，随后计算 3 秒，共估多少秒？",
+          "answer": 5,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "50 W 持续 4 秒，按恒功率估算多少焦耳？",
+          "answer": 200,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "estimate(size, bandwidth, compute_seconds)",
+      "starter": "def estimate(size, bandwidth, compute_seconds):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "非负数字参数。传输与计算顺序执行，返回两项估算之和，统一输出秒数小数。带宽为零时返回 None。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            20,
+            10,
+            1.5
+          ],
+          "expected": 3.5
+        }
+      ],
+      "correctness": [
+        [
+          [
+            20,
+            10,
+            1.5
+          ],
+          3.5
+        ],
+        [
+          [
+            15,
+            2,
+            1
+          ],
+          8.5
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            0,
+            10,
+            0
+          ],
+          0
+        ],
+        [
+          [
+            10,
+            0,
+            1
+          ],
+          null
+        ],
+        [
+          [
+            2,
+            4,
+            0
+          ],
+          0.5
+        ]
+      ]
+    }
+  },
+  "week-07": {
+    "unit": {
+      "id": "week-07",
+      "unit": "week-07",
+      "order": 27,
+      "week": 7,
+      "layer": "L3",
+      "title": "找证据 · 做一个可比较的检索器",
+      "objective": "检索先从文档里找可能相关的段落，再交给回答模块。可以先用词的交集当基线，之后用同一套问题比较更复杂的检索方法。",
+      "concepts": [
+        "把问题和每段文本按空白分词，统一大小写",
+        "用共有词数给段落打分，零分跳过",
+        "评估时给问题标出应找的文档，记录前 k 条里是否包含它"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-07 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-06"
+      ],
+      "gate": true,
+      "practice": "course-week-07",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "找证据 · 做一个可比较的检索器",
+        "idea": "检索先从文档里找可能相关的段落，再交给回答模块。可以先用词的交集当基线，之后用同一套问题比较更复杂的检索方法。",
+        "steps": [
+          "把问题和每段文本按空白分词，统一大小写。同一个词重复出现只计一次。",
+          "用共有词数给段落打分，零分跳过。按分数降序，分数相同按文档 ID 排序，保证结果可复现。",
+          "评估时给问题标出应找的文档，记录前 k 条里是否包含它。若改用向量，点积和长度归一化能衡量方向相似程度。",
+          "如果每次都扫描全部 N 篇文档，文档翻倍通常意味着要多扫描一遍原来的量。倒排索引先按词记录出现在哪些文档里，查词时就只需要读对应的清单。把‘建索引’和‘一次查询’分开计时。"
+        ],
+        "example": "query = set(\"paper accuracy\".split())\npage = set(\"paper reports accuracy\".casefold().split())\nprint(len(query & page))  # & 在这里取两个集合的交集",
+        "check": "问题与页面只有 paper 相同，重合分是多少？",
+        "answer": "1。只数共有的不同词。",
+        "practice": "documents 是含 id 和 text 字符串的字典列表，ID 唯一。按空白分词并 casefold，共有不同词数是分数。过滤零分，分数降序、ID 升序，返回前 k 个 ID；k<=0 返回空列表。"
+      }
+    },
+    "quiz": {
+      "id": "week-07",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "问题与页面只有 paper 相同，重合分是多少？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "1。只数共有的不同词。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "问题词是 a、b、c，文档词是 b、c、d，重合分是多少？",
+          "answer": 2,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "4 道问题里有 3 道在前两条找到了应找文档，命中率是多少？",
+          "answer": 0.75,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "rank(query, documents, k)",
+      "starter": "def rank(query, documents, k):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "documents 是含 id 和 text 字符串的字典列表，ID 唯一。按空白分词并 casefold，共有不同词数是分数。过滤零分，分数降序、ID 升序，返回前 k 个 ID；k<=0 返回空列表。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            "repo setup",
+            [
+              {
+                "id": "b",
+                "text": "repo setup"
+              },
+              {
+                "id": "a",
+                "text": "repo"
+              }
+            ],
+            2
+          ],
+          "expected": [
+            "b",
+            "a"
+          ]
+        }
+      ],
+      "correctness": [
+        [
+          [
+            "repo setup",
+            [
+              {
+                "id": "b",
+                "text": "repo setup"
+              },
+              {
+                "id": "a",
+                "text": "repo"
+              }
+            ],
+            2
+          ],
+          [
+            "b",
+            "a"
+          ]
+        ],
+        [
+          [
+            "paper",
+            [
+              {
+                "id": "c",
+                "text": "Repo"
+              },
+              {
+                "id": "a",
+                "text": "PAPER"
+              }
+            ],
+            1
+          ],
+          [
+            "a"
+          ]
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            "X X",
+            [
+              {
+                "id": "b",
+                "text": "X X X"
+              },
+              {
+                "id": "a",
+                "text": "x"
+              }
+            ],
+            2
+          ],
+          [
+            "a",
+            "b"
+          ]
+        ],
+        [
+          [
+            "x",
+            [],
+            3
+          ],
+          []
+        ],
+        [
+          [
+            "x",
+            [
+              {
+                "id": "a",
+                "text": "x"
+              }
+            ],
+            0
+          ],
+          []
+        ],
+        [
+          [
+            "x",
+            [
+              {
+                "id": "z",
+                "text": "xx"
+              }
+            ],
+            2
+          ],
+          []
+        ]
+      ]
+    }
+  },
+  "week-08": {
+    "unit": {
+      "id": "week-08",
+      "unit": "week-08",
+      "order": 28,
+      "week": 8,
+      "layer": "L3",
+      "title": "结构化回答 · 引用能核对的材料",
+      "objective": "模型输出可以先当作一份待审核的草稿。程序检查字段和来源，才决定是否交给使用者。引用要指向实际取到的材料。",
+      "concepts": [
+        "约定草稿包含 answer 字符串和 source 文档 ID",
+        "检查答案有内容且来源在允许列表中",
+        "缺证据时返回 needs_review，让人工决定如何处理"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-08 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-07"
+      ],
+      "gate": true,
+      "practice": "course-week-08",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "结构化回答 · 引用能核对的材料",
+        "idea": "模型输出可以先当作一份待审核的草稿。程序检查字段和来源，才决定是否交给使用者。引用要指向实际取到的材料。",
+        "steps": [
+          "约定草稿包含 answer 字符串和 source 文档 ID。调用者传入实际找到的 ID 列表。",
+          "检查答案有内容且来源在允许列表中。只允许格式正确不能保证句子被原文支持，还需要专门的证据评测。",
+          "缺证据时返回 needs_review，让人工决定如何处理。用错误引用、空答案和缺字段等例子检验这条路径。"
+        ],
+        "example": "draft = {\"answer\": \"See the schedule.\", \"source\": \"paper-a\"}\nallowed = [\"paper-a\"]\nprint(draft.get(\"source\") in allowed)  # 来源是否来自本次检索",
+        "check": "草稿引用了没有被检索到的文档，怎么办？",
+        "answer": "进入人工复核，不发布该草稿。",
+        "practice": "draft 可能是任意 JSON 值，allowed 是允许的字符串 ID 列表。草稿为字典、answer 是去空白后非空字符串、source 是 allowed 中的字符串时返回 accepted，其余返回 needs_review。"
+      }
+    },
+    "quiz": {
+      "id": "week-08",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "草稿引用了没有被检索到的文档，怎么办？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "进入人工复核，不发布该草稿。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "有 5 份草稿，2 份来源无效，其余都合格，接受几份？",
+          "answer": 3,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "允许来源列表为空，最多能自动接受几份草稿？",
+          "answer": 0,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "check_answer(draft, allowed)",
+      "starter": "def check_answer(draft, allowed):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "draft 可能是任意 JSON 值，allowed 是允许的字符串 ID 列表。草稿为字典、answer 是去空白后非空字符串、source 是 allowed 中的字符串时返回 accepted，其余返回 needs_review。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            {
+              "answer": "Open.",
+              "source": "paper-a"
+            },
+            [
+              "paper-a"
+            ]
+          ],
+          "expected": "accepted"
+        }
+      ],
+      "correctness": [
+        [
+          [
+            {
+              "answer": "Open.",
+              "source": "paper-a"
+            },
+            [
+              "paper-a"
+            ]
+          ],
+          "accepted"
+        ],
+        [
+          [
+            {
+              "answer": "  See notice ",
+              "source": "it"
+            },
+            [
+              "paper-a",
+              "it"
+            ]
+          ],
+          "accepted"
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            {
+              "answer": "hi",
+              "source": "invented"
+            },
+            [
+              "paper-a"
+            ]
+          ],
+          "needs_review"
+        ],
+        [
+          [
+            {
+              "answer": " ",
+              "source": "paper-a"
+            },
+            [
+              "paper-a"
+            ]
+          ],
+          "needs_review"
+        ],
+        [
+          [
+            null,
+            [
+              "paper-a"
+            ]
+          ],
+          "needs_review"
+        ],
+        [
+          [
+            {
+              "answer": "hi",
+              "source": [
+                "paper-a"
+              ]
+            },
+            [
+              "paper-a"
+            ]
+          ],
+          "needs_review"
+        ]
+      ]
+    }
+  },
+  "week-09": {
+    "unit": {
+      "id": "week-09",
+      "unit": "week-09",
+      "order": 29,
+      "week": 9,
+      "layer": "L4",
+      "title": "可靠性 · 给重试设上限",
+      "objective": "依赖可能超时。失败后重试可以补救临时故障，也可能放大负担。先规定最多调用几次，以及哪类故障值得重试。",
+      "concepts": [
+        "每尝试一次都消耗一个名额，先检查预算是否还有余额",
+        "超时是这里允许重试的临时故障",
+        "测试成功、超时后成功、连续超时和参数错误"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-09 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-08"
+      ],
+      "gate": true,
+      "practice": "course-week-09",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "可靠性 · 给重试设上限",
+        "idea": "依赖可能超时。失败后重试可以补救临时故障，也可能放大负担。先规定最多调用几次，以及哪类故障值得重试。",
+        "steps": [
+          "每尝试一次都消耗一个名额，先检查预算是否还有余额。",
+          "超时是这里允许重试的临时故障。收到 ok 立即结束，收到 invalid 立即转人工。",
+          "测试成功、超时后成功、连续超时和参数错误。真实网络调用还需要单次超时和总时限，等待时间也计入总预算。",
+          "当依赖是 HTTP 接口，请求发出后可能收到响应，也可能等到超时。服务返回的状态码与请求是否成功是两件要检查的事。真实项目要将时钟和依赖交给调用方注入，才能用固定的故障序列重复测试。"
+        ],
+        "example": "events = [\"timeout\", \"ok\", \"timeout\"]\nfor index, event in enumerate(events[:2], start=1):  # 切片 [:2] 最多取前两次\n    if event == \"ok\":\n        print(\"成功时已尝试\", index)\n        break",
+        "check": "预算是两次，两次都超时，第三个响应即使会成功，该继续吗？",
+        "answer": "预算已用完，本轮转人工或由上层安排稍后处理。",
+        "practice": "events 是 ok、timeout、invalid 三种结果的序列，limit 是非负调用次数上限。逐项消费，ok 返回 {\"status\":\"ok\",\"attempts\":次数}；invalid 或耗尽输入/预算返回 {\"status\":\"review\",\"attempts\":次数}。"
+      }
+    },
+    "quiz": {
+      "id": "week-09",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "预算是两次，两次都超时，第三个响应即使会成功，该继续吗？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "预算已用完，本轮转人工或由上层安排稍后处理。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "第一次超时，第二次成功，实际调用了几次？",
+          "answer": 2,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "最多尝试 3 次，每次最多 2 秒，忽略等待时调用预算是多少秒？",
+          "answer": 6,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "run_with_budget(events, limit)",
+      "starter": "def run_with_budget(events, limit):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "events 是 ok、timeout、invalid 三种结果的序列，limit 是非负调用次数上限。逐项消费，ok 返回 {\"status\":\"ok\",\"attempts\":次数}；invalid 或耗尽输入/预算返回 {\"status\":\"review\",\"attempts\":次数}。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            [
+              "timeout",
+              "ok",
+              "invalid"
+            ],
+            3
+          ],
+          "expected": {
+            "status": "ok",
+            "attempts": 2
+          }
+        }
+      ],
+      "correctness": [
+        [
+          [
+            [
+              "timeout",
+              "ok",
+              "invalid"
+            ],
+            3
+          ],
+          {
+            "status": "ok",
+            "attempts": 2
+          }
+        ],
+        [
+          [
+            [
+              "ok"
+            ],
+            1
+          ],
+          {
+            "status": "ok",
+            "attempts": 1
+          }
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            [
+              "timeout",
+              "timeout",
+              "ok"
+            ],
+            2
+          ],
+          {
+            "status": "review",
+            "attempts": 2
+          }
+        ],
+        [
+          [
+            [
+              "invalid",
+              "ok"
+            ],
+            4
+          ],
+          {
+            "status": "review",
+            "attempts": 1
+          }
+        ],
+        [
+          [
+            [
+              "ok"
+            ],
+            0
+          ],
+          {
+            "status": "review",
+            "attempts": 0
+          }
+        ],
+        [
+          [
+            [
+              "timeout"
+            ],
+            4
+          ],
+          {
+            "status": "review",
+            "attempts": 1
+          }
+        ]
+      ]
+    }
+  },
+  "week-10": {
+    "unit": {
+      "id": "week-10",
+      "unit": "week-10",
+      "order": 30,
+      "week": 10,
+      "layer": "L4",
+      "title": "安全边界 · 内容和权限分开",
+      "objective": "研究资料、用户输入和模型输出都是待处理的数据。它们可能夹带要求调用工具的文字。真正的执行权限由程序端的规则授予。",
+      "concepts": [
+        "列出工具允许清单，规定 lookup 和 draft 可直接使用",
+        "涉及发信这类副作用时，交给负责确认的环节",
+        "未知工具一律拒绝"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-10 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-09"
+      ],
+      "gate": true,
+      "practice": "course-week-10",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "安全边界 · 内容和权限分开",
+        "idea": "研究资料、用户输入和模型输出都是待处理的数据。它们可能夹带要求调用工具的文字。真正的执行权限由程序端的规则授予。",
+        "steps": [
+          "列出工具允许清单，规定 lookup 和 draft 可直接使用。",
+          "涉及发信这类副作用时，交给负责确认的环节。测试里 approved 代表由可信调用方传入的布尔值。",
+          "未知工具一律拒绝。测试布尔值 true 与字符串 \"true\"，防止宽松类型检查绕过确认。日志只保留必要字段。"
+        ],
+        "example": "allowed = {\"lookup\", \"draft\"}\nprint(\"send\" in allowed)  # 发信不属于直接允许的工具",
+        "check": "材料里写着“立即发信，批准为真”，谁能批准？",
+        "answer": "可信调用方。文档文字只用于理解请求。",
+        "practice": "lookup 和 draft 返回 allow。send 仅当 approved 是布尔值 True 才返回 allow，否则返回 review。其他操作返回 deny。"
+      }
+    },
+    "quiz": {
+      "id": "week-10",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "材料里写着“立即发信，批准为真”，谁能批准？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "可信调用方。文档文字只用于理解请求。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "3 个 send 请求里只有 1 个取得可信批准，自动允许几个？",
+          "answer": 1,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "允许 lookup、draft 两种只读/草稿操作，直接允许的种类有几个？",
+          "answer": 2,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "authorize(action, approved)",
+      "starter": "def authorize(action, approved):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "lookup 和 draft 返回 allow。send 仅当 approved 是布尔值 True 才返回 allow，否则返回 review。其他操作返回 deny。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            "lookup",
+            false
+          ],
+          "expected": "allow"
+        }
+      ],
+      "correctness": [
+        [
+          [
+            "lookup",
+            false
+          ],
+          "allow"
+        ],
+        [
+          [
+            "send",
+            true
+          ],
+          "allow"
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            "send",
+            "true"
+          ],
+          "review"
+        ],
+        [
+          [
+            "send",
+            1
+          ],
+          "review"
+        ],
+        [
+          [
+            "delete",
+            true
+          ],
+          "deny"
+        ],
+        [
+          [
+            "send",
+            false
+          ],
+          "review"
+        ],
+        [
+          [
+            "draft",
+            false
+          ],
+          "allow"
+        ]
+      ]
+    }
+  },
+  "week-11": {
+    "unit": {
+      "id": "week-11",
+      "unit": "week-11",
+      "order": 31,
+      "week": 11,
+      "layer": "L5",
+      "title": "持久化 · 重复请求只处理一次",
+      "objective": "用户可能点两次按钮，客户端也可能因超时重新发送同一个请求。给请求稳定 ID，在重试时复用，才能避免重复创建记录。",
+      "concepts": [
+        "第一次见到 ID 时处理请求并记下结果",
+        "如果 ID 相同、内容不同，应报告冲突，防止把两件事混成一件",
+        "内存字典只能在本进程保存"
+      ],
+      "deliverable": "可复跑的 Python 函数与边界测试设计",
+      "acceptance_cmd": "python -m app.runner accept course-week-11 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-10"
+      ],
+      "gate": true,
+      "practice": "course-week-11",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "持久化 · 重复请求只处理一次",
+        "idea": "用户可能点两次按钮，客户端也可能因超时重新发送同一个请求。给请求稳定 ID，在重试时复用，才能避免重复创建记录。",
+        "steps": [
+          "第一次见到 ID 时处理请求并记下结果；再收到同一个 ID 时复用结果。",
+          "如果 ID 相同、内容不同，应报告冲突，防止把两件事混成一件。",
+          "内存字典只能在本进程保存。真实系统用数据库唯一键和事务，让检查和写入一起成功或一起回滚。"
+        ],
+        "example": "import sqlite3\nfrom contextlib import closing\n\nwith closing(sqlite3.connect(\":memory:\")) as db:  # with 退出时关闭连接\n    with db:  # 成功提交，异常时回滚\n        db.execute(\"CREATE TABLE jobs (id TEXT PRIMARY KEY, text TEXT)\")\n        db.execute(\"INSERT INTO jobs VALUES (?, ?)\", (\"req-1\", \"paper\"))  # ? 绑定参数\n    print(db.execute(\"SELECT id, text FROM jobs\").fetchall())",
+        "check": "两条请求 ID 一样，但文本不同，应该继续覆盖原文本吗？",
+        "answer": "应报告冲突并保留原记录。",
+        "practice": "输入是按顺序排列的 [ID, 内容] 列表，均为字符串。每条记录返回一种状态，首次 ID 为 created，同 ID 同内容为 duplicate，同 ID 不同内容为 conflict。冲突后仍按首次内容比较。返回状态列表。"
+      }
+    },
+    "quiz": {
+      "id": "week-11",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "两条请求 ID 一样，但文本不同，应该继续覆盖原文本吗？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "应报告冲突并保留原记录。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "同一个请求提交 3 次，首次成功，应该创建几条记录？",
+          "answer": 1,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "3 条记录的 ID 各不相同，都合法，创建几条？",
+          "answer": 3,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "process(records)",
+      "starter": "def process(records):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "输入是按顺序排列的 [ID, 内容] 列表，均为字符串。每条记录返回一种状态，首次 ID 为 created，同 ID 同内容为 duplicate，同 ID 不同内容为 conflict。冲突后仍按首次内容比较。返回状态列表。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            [
+              [
+                "a",
+                "x"
+              ],
+              [
+                "a",
+                "x"
+              ],
+              [
+                "b",
+                "y"
+              ]
+            ]
+          ],
+          "expected": [
+            "created",
+            "duplicate",
+            "created"
+          ]
+        }
+      ],
+      "correctness": [
+        [
+          [
+            [
+              [
+                "a",
+                "x"
+              ],
+              [
+                "a",
+                "x"
+              ],
+              [
+                "b",
+                "y"
+              ]
+            ]
+          ],
+          [
+            "created",
+            "duplicate",
+            "created"
+          ]
+        ],
+        [
+          [
+            [
+              [
+                "a",
+                "x"
+              ],
+              [
+                "a",
+                "y"
+              ],
+              [
+                "a",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "created",
+            "conflict",
+            "duplicate"
+          ]
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              [
+                "a",
+                ""
+              ],
+              [
+                "a",
+                ""
+              ],
+              [
+                "b",
+                ""
+              ]
+            ]
+          ],
+          [
+            "created",
+            "duplicate",
+            "created"
+          ]
+        ],
+        [
+          [
+            [
+              [
+                "A",
+                "x"
+              ],
+              [
+                "a",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "created",
+            "created"
+          ]
+        ]
+      ]
+    }
+  },
+  "week-12": {
+    "unit": {
+      "id": "week-12",
+      "unit": "week-12",
+      "order": 32,
+      "week": 12,
+      "layer": "L5",
+      "title": "结课项目 · 本地论文与技术文档证据助手",
+      "objective": "把整条链路跑起来。系统接收一条技术调研问题，先识别需要人工的情况，再在给定资料里找最相关的文档，最后输出一条带来源的可核对结果。",
+      "concepts": [
+        "先写验收表",
+        "用前几周的分词、交集与排序完成可复现的基线",
+        "准备至少一条你自己遇到过的问题，写出预期结果及理由"
+      ],
+      "deliverable": "证据助手函数、真实资料检索记录与可复跑的验收表",
+      "acceptance_cmd": "python -m app.runner accept course-week-12 --solution {solution}",
+      "hours": {
+        "study": 0.5,
+        "write": 1,
+        "read": 0.5
+      },
+      "prereq": [
+        "week-11"
+      ],
+      "gate": true,
+      "practice": "course-week-12",
+      "lecture": false,
+      "produced": true,
+      "supplement": false,
+      "requires_quiz": true,
+      "guide": {
+        "title": "结课项目 · 本地论文与技术文档证据助手",
+        "idea": "把整条链路跑起来。系统接收一条技术调研问题，先识别需要人工的情况，再在给定资料里找最相关的文档，最后输出一条带来源的可核对结果。",
+        "steps": [
+          "先写验收表。普通问题要找到正确资料，私有资料问题与找不到资料的情况要转人工，两个候选平分时要确定性选一个。",
+          "用前几周的分词、交集与排序完成可复现的基线。后续可以把草稿生成交给模型，再用相同验收集比较。",
+          "准备至少一条你自己遇到过的问题，写出预期结果及理由。分别记录命中、转人工与错误引用，保留一批用例供改动后复测。",
+          "做完后，用课内的证据助手试两份自己的资料，检查摘录能不能定位到原文。再写一张对照表，记录词法检索漏掉的同义表达、引用是否支持主张，以及什么情况下应该交给人工。"
+        ],
+        "example": "result = {\"status\": \"answered\", \"source\": \"paper-a\", \"answer\": \"实验采用固定随机种子。\"}\nassert result[\"source\"] in {\"paper-a\"}  # assert 用来检查必须成立的条件\nprint(result[\"answer\"])",
+        "check": "题目没有任何匹配资料时，如何算成功？",
+        "answer": "系统能可靠返回转人工，这就是该样本预期的成功行为。",
+        "practice": "documents 含唯一 id 及 text 字符串。按空白分词并 casefold。query 含 private 或无正分候选时返回 {\"status\":\"review\"}。用共有不同词数打分，分数最高优先，同分按 id 升序。返回 {\"status\":\"answered\",\"source\":id,\"answer\":所选文档原文}。"
+      }
+    },
+    "quiz": {
+      "id": "week-12",
+      "timebox_min": 15,
+      "questions": [
+        {
+          "id": "c1",
+          "kind": "concept",
+          "prompt": "题目没有任何匹配资料时，如何算成功？",
+          "rubric": [
+            "未说明",
+            "说出了部分关系",
+            "系统能可靠返回转人工，这就是该样本预期的成功行为。"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "concept",
+          "prompt": "用自己的话说明，这一课的输入和输出各是什么？",
+          "rubric": [
+            "未说明",
+            "只说清输入或输出",
+            "说清输入、输出和一个限制条件"
+          ]
+        },
+        {
+          "id": "n1",
+          "kind": "number",
+          "prompt": "10 个验收用例里有 2 个私有资料请求和 3 个无证据请求，两类不重叠，应转人工几个？",
+          "answer": 5,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "n2",
+          "kind": "number",
+          "prompt": "12 条回答有 3 条引用错误，其余正确，引用正确率是多少？",
+          "answer": 0.75,
+          "atol": 0.0001,
+          "rtol": 0,
+          "working": "回到讲解中的数量关系，写下单位和计算步骤，再核对分子与分母。"
+        },
+        {
+          "id": "d1",
+          "kind": "design",
+          "prompt": "写一个新的边界测试，列出输入、期望输出和原因。",
+          "rubric": [
+            "未给出可测例子",
+            "有输入和预期结果",
+            "给出输入、预期结果，并解释能发现哪类错误"
+          ]
+        }
+      ]
+    },
+    "exercise": {
+      "signature": "assist(query, documents)",
+      "starter": "def assist(query, documents):\n    # TODO：先按讲解中的例子写出第一步\n    raise NotImplementedError\n",
+      "contract": "documents 含唯一 id 及 text 字符串。按空白分词并 casefold。query 含 private 或无正分候选时返回 {\"status\":\"review\"}。用共有不同词数打分，分数最高优先，同分按 id 升序。返回 {\"status\":\"answered\",\"source\":id,\"answer\":所选文档原文}。",
+      "minutes": 45,
+      "examples": [
+        {
+          "args": [
+            "paper hours",
+            [
+              {
+                "id": "paper-a",
+                "text": "paper hours 实验设置"
+              },
+              {
+                "id": "it",
+                "text": "repo setup 安装步骤"
+              }
+            ]
+          ],
+          "expected": {
+            "status": "answered",
+            "source": "paper-a",
+            "answer": "paper hours 实验设置"
+          }
+        }
+      ],
+      "correctness": [
+        [
+          [
+            "paper hours",
+            [
+              {
+                "id": "paper-a",
+                "text": "paper hours 实验设置"
+              },
+              {
+                "id": "it",
+                "text": "repo setup 安装步骤"
+              }
+            ]
+          ],
+          {
+            "status": "answered",
+            "source": "paper-a",
+            "answer": "paper hours 实验设置"
+          }
+        ],
+        [
+          [
+            "REPO",
+            [
+              {
+                "id": "it",
+                "text": "repo setup 安装步骤"
+              }
+            ]
+          ],
+          {
+            "status": "answered",
+            "source": "it",
+            "answer": "repo setup 安装步骤"
+          }
+        ]
+      ],
+      "robustness": [
+        [
+          [
+            "private repo",
+            [
+              {
+                "id": "it",
+                "text": "repo setup"
+              }
+            ]
+          ],
+          {
+            "status": "review"
+          }
+        ],
+        [
+          [
+            "unknown",
+            [
+              {
+                "id": "it",
+                "text": "repo setup"
+              }
+            ]
+          ],
+          {
+            "status": "review"
+          }
+        ],
+        [
+          [
+            "repo",
+            []
+          ],
+          {
+            "status": "review"
+          }
+        ],
+        [
+          [
+            "repo repo",
+            [
+              {
+                "id": "b",
+                "text": "repo repo"
+              },
+              {
+                "id": "a",
+                "text": "Repo"
+              }
+            ]
+          ],
+          {
+            "status": "answered",
+            "source": "a",
+            "answer": "Repo"
+          }
+        ],
+        [
+          [
+            "  ",
+            [
+              {
+                "id": "a",
+                "text": "repo"
+              }
+            ]
+          ],
+          {
+            "status": "review"
+          }
+        ]
+      ]
+    }
+  }
+}

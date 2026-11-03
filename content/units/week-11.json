@@ -1,0 +1,24 @@
+{
+  "id": "week-11",
+  "order": 31,
+  "week": 11,
+  "layer": "L5",
+  "unit": "week-11",
+  "title": "L5 · 待生产",
+  "objective": "待生产；通过内容工厂校验后才开放",
+  "concepts": [],
+  "deliverable": "待生产",
+  "acceptance_cmd": "",
+  "hours": {
+    "study": 2,
+    "write": 6,
+    "read": 2
+  },
+  "prereq": [
+    "week-10"
+  ],
+  "gate": true,
+  "practice": "",
+  "lecture": false,
+  "produced": false
+}

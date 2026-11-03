@@ -1,0 +1,28 @@
+{
+  "id": "r0-kv",
+  "order": 4,
+  "week": 1,
+  "layer": "R0",
+  "unit": "r0-kv",
+  "title": "KV 字节账",
+  "objective": "从签名独立实现并通过隐藏边界测试",
+  "concepts": [
+    "kv_bytes",
+    "形状契约",
+    "数值边界"
+  ],
+  "deliverable": "单文件 NumPy 实现",
+  "acceptance_cmd": "python -m app.runner accept r0-kv --solution {solution}",
+  "hours": {
+    "study": 0.3,
+    "write": 1,
+    "read": 0.2
+  },
+  "prereq": [
+    "r0-gradient"
+  ],
+  "gate": true,
+  "practice": "r0-kv",
+  "lecture": false,
+  "produced": true
+}

@@ -1,0 +1,54 @@
+{
+  "id": "l0-memory",
+  "timebox_min": 15,
+  "questions": [
+    {
+      "id": "c1",
+      "kind": "concept",
+      "prompt": "解释裸权重与Adam常驻项的差别。",
+      "rubric": [
+        "无法区分",
+        "能区分两项",
+        "能区分三项并说出增长规律"
+      ]
+    },
+    {
+      "id": "c2",
+      "kind": "concept",
+      "prompt": "解释KV为何随token数线性增长。",
+      "rubric": [
+        "没有解释",
+        "提到防溢出",
+        "说明分子分母同因子缩放"
+      ]
+    },
+    {
+      "id": "n1",
+      "kind": "number",
+      "prompt": "0.5B参数、每参数2字节，裸权重多少十进制GB？",
+      "answer": 1.0,
+      "atol": 0.001,
+      "rtol": 0,
+      "working": "参数数×每参数字节÷十进制GB字节数。"
+    },
+    {
+      "id": "n2",
+      "kind": "number",
+      "prompt": "L=24,T=1024,H=8,D=64,b=2，KV共多少MiB？",
+      "answer": 48.0,
+      "atol": 0.01,
+      "rtol": 0,
+      "working": "K和V两份×层×token×KV头×头宽×字节，再换成MiB。"
+    },
+    {
+      "id": "d1",
+      "kind": "design",
+      "prompt": "设计一次比较向量化与循环的实验。",
+      "rubric": [
+        "缺少对照",
+        "固定数据与同机对照",
+        "还明确预热、重复、中位数、内存与正确性门禁"
+      ]
+    }
+  ]
+}

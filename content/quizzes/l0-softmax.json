@@ -1,0 +1,54 @@
+{
+  "id": "l0-softmax",
+  "timebox_min": 15,
+  "questions": [
+    {
+      "id": "c1",
+      "kind": "concept",
+      "prompt": "解释减最大值为何保持softmax不变。",
+      "rubric": [
+        "无法区分",
+        "能区分两项",
+        "能区分三项并说出增长规律"
+      ]
+    },
+    {
+      "id": "c2",
+      "kind": "concept",
+      "prompt": "解释batch维与归约轴的区别。",
+      "rubric": [
+        "没有解释",
+        "提到防溢出",
+        "说明分子分母同因子缩放"
+      ]
+    },
+    {
+      "id": "n1",
+      "kind": "number",
+      "prompt": "256×256的float64输入占多少MiB？",
+      "answer": 0.5,
+      "atol": 0.001,
+      "rtol": 0,
+      "working": "行数×列数×每元素字节，再换算为MiB。"
+    },
+    {
+      "id": "n2",
+      "kind": "number",
+      "prompt": "基线8ms，新实现2ms，加速多少倍？",
+      "answer": 4.0,
+      "atol": 0.01,
+      "rtol": 0,
+      "working": "基线耗时除以新实现耗时；使用相同单位。"
+    },
+    {
+      "id": "d1",
+      "kind": "design",
+      "prompt": "设计一次比较向量化与循环的实验。",
+      "rubric": [
+        "缺少对照",
+        "固定数据与同机对照",
+        "还明确预热、重复、中位数、内存与正确性门禁"
+      ]
+    }
+  ]
+}

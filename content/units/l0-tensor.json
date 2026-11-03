@@ -1,0 +1,28 @@
+{
+  "id": "l0-tensor",
+  "order": 6,
+  "week": 2,
+  "layer": "L0",
+  "unit": "l0-tensor",
+  "title": "从形状到矩阵乘法契约",
+  "objective": "核对形状、操作数和容差",
+  "concepts": [
+    "形状契约",
+    "步幅与视图",
+    "误差容限"
+  ],
+  "deliverable": "讲义复述 + 五题闭卷 + 实验记录",
+  "acceptance_cmd": "python -m app.runner accept r0-matmul --solution {solution}",
+  "hours": {
+    "study": 0.6,
+    "write": 1.4,
+    "read": 0.4
+  },
+  "prereq": [
+    "l0-memory"
+  ],
+  "gate": true,
+  "practice": "r0-matmul",
+  "lecture": true,
+  "produced": true
+}

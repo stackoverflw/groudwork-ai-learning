@@ -1,0 +1,26 @@
+{
+  "id": "r0-softmax",
+  "order": 0,
+  "week": 1,
+  "layer": "R0",
+  "unit": "r0-softmax",
+  "title": "稳定 softmax",
+  "objective": "从签名独立实现并通过隐藏边界测试",
+  "concepts": [
+    "softmax",
+    "形状契约",
+    "数值边界"
+  ],
+  "deliverable": "单文件 NumPy 实现",
+  "acceptance_cmd": "python -m app.runner accept r0-softmax --solution {solution}",
+  "hours": {
+    "study": 0.3,
+    "write": 1,
+    "read": 0.2
+  },
+  "prereq": [],
+  "gate": true,
+  "practice": "r0-softmax",
+  "lecture": false,
+  "produced": true
+}
